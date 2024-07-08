@@ -17,7 +17,6 @@ const page: FC<pageProps> = ({}) => {
         setIsLoading(true)
 
         try {
-            throw new Error('doesnot matter')
             await signIn('google')
         } catch (error) {
             // display error msg to user
