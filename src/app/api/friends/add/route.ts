@@ -30,7 +30,7 @@ export async function POST(req: Request) {
 
     // check if user is added
 
-    const isAlreadyAdded = await fetchRedis('sismember', `user:${idToAdd}:incoming_friend_request`, session.user.id) as 0 | 1
+    const isAlreadyAdded = await fetchRedis('sismember', `user:${idToAdd}:incomin_frien_requests`, session.user.id) as 0 | 1
 
     if (isAlreadyAdded) {
         return new Response(`Already Added this user`, {status:400})
