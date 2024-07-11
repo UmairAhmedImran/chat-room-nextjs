@@ -13,7 +13,7 @@ export async function POST(req: Request) {
 
         const { id:idToDeny } = z.object({ id: z.string()}).parse(body)
 
-        await db.srem(`user${session.user.id}:incomin_frien_requests`, idToDeny)
+        await db.srem(`user:${session.user.id}:incomin_frien_requests`, idToDeny)
 
         return new Response('OK')
 
