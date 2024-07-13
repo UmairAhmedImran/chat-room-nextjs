@@ -4,6 +4,8 @@ import { db } from "@/lib/db"
 import { getServerSession } from "next-auth"
 import { nanoid } from 'nanoid'
 import { Message, messageValidator } from "@/lib/validations/message"
+import { pusherServer } from "@/lib/pusher"
+import { toPusherKey } from "@/lib/utils"
 
 
 export async function POST(req: Request) {
@@ -32,8 +34,7 @@ export async function POST(req: Request) {
         const rawSender = await fetchRedis('get', `user:${session.user.id}`) as string
         const sender = JSON.parse(rawSender) as User
 
-        // all vslid send the message
-
+        
         const timestamp = Date.now()
 
         const messageData: Message = {
@@ -44,6 +45,13 @@ export async function POST(req: Request) {
         }
 
         const message = messageValidator.parse(messageData)
+
+        // notify all connected chatroom clients
+
+        pusherServer.trigger(toPusherKey(`chat:${chatId}`), 'incoming-message', message)
+
+
+        // all vslid send the message
 
         await db.zadd(`chat:${chatId}:messages`, {
             score: timestamp,

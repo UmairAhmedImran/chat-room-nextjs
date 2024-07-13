@@ -20,6 +20,7 @@ const Chatinput: FC<ChatinputProps> = ({chartPatner, chatId}) => {
     const textareaRef  = useRef<HTMLTextAreaElement | null>(null)
 
     const sendMessage = async () => {
+        if(!input) return
         setIsLoading(true)
 
         try {
