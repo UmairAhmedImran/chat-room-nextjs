@@ -6,12 +6,12 @@ import Button from './ui/Button'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 
-interface ChatinputProps {
-    chartPatner: User
+interface ChatInputProps {
+    chatPartner: User
     chatId: string
 }
 
-const Chatinput: FC<ChatinputProps> = ({chartPatner, chatId}) => {
+const ChatInput: FC<ChatInputProps> = ({chatPartner, chatId}) => {
 
     const [input, setInput] = useState<string>('')
 
@@ -47,7 +47,7 @@ const Chatinput: FC<ChatinputProps> = ({chartPatner, chatId}) => {
         rows={1}
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        placeholder={`Message ${chartPatner.name}`}
+        placeholder={`Message ${chatPartner.name}`}
         className='block w-full resize-none border-0 bg-transparent text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:py-1.5 sm:text-sm sm:leading-6'
         />
         <div onClick={() => textareaRef.current?.focus()} className='py-2' aria-hidden='true'>
@@ -64,4 +64,4 @@ const Chatinput: FC<ChatinputProps> = ({chartPatner, chatId}) => {
   </div>
 }
 
-export default Chatinput
+export default ChatInput

@@ -50,6 +50,12 @@ export async function POST(req: Request) {
 
         pusherServer.trigger(toPusherKey(`chat:${chatId}`), 'incoming-message', message)
 
+        pusherServer.trigger(toPusherKey(`user:${friendId}:chats`), "new_message", {
+            ...message,
+            senderImg: sender.image,
+            senderName: sender.name
+        })
+
 
         // all vslid send the message
 
