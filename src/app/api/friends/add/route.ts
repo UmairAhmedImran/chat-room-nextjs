@@ -32,7 +32,7 @@ export async function POST(req: Request) {
 
     // check if user is added
 
-    pusherServer.trigger(
+    await pusherServer.trigger(
         toPusherKey(`user:${idToAdd}:incomin_frien_requests`), 'incomin_frien_requests',
             {
                 senderId: session.user.id,

@@ -48,9 +48,9 @@ export async function POST(req: Request) {
 
         // notify all connected chatroom clients
 
-        pusherServer.trigger(toPusherKey(`chat:${chatId}`), 'incoming-message', message)
+        await pusherServer.trigger(toPusherKey(`chat:${chatId}`), 'incoming-message', message)
 
-        pusherServer.trigger(toPusherKey(`user:${friendId}:chats`), "new_message", {
+        await pusherServer.trigger(toPusherKey(`user:${friendId}:chats`), "new_message", {
             ...message,
             senderImg: sender.image,
             senderName: sender.name
