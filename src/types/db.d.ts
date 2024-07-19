@@ -17,7 +17,7 @@ interface FriendRequest {
 
 interface Message {
     id: string
-    senderid: string
+    senderId: string
     reciverId: string
     text: string
     timestamp: number

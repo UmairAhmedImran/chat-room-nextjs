@@ -43,7 +43,6 @@ const page = async ({ params }: PageProps) => {
   const { user } = session
 
   const [userId1, userId2] = chatId.split('--')
-  console.log(userId1, userId2)
 
   if (user.id !== userId1 && user.id !== userId2) {
     notFound()
@@ -58,7 +57,6 @@ const page = async ({ params }: PageProps) => {
   )) as string
   const chatPartner = JSON.parse(chatPartnerRaw) as User
   // if (!chatPartner) notFound
-  console.log("chatPartner", chatPartner)
   const initialMessages = await getChatMessages(chatId)
 
   return (
