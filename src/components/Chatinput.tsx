@@ -29,7 +29,7 @@ const ChatInput: FC<ChatInputProps> = ({chatPartner, chatId}) => {
             textareaRef.current?.focus()
 
         } catch {
-            toast.error('Something went wwrong. Please try again later.')
+            toast.error('Something went wrong. Please try again later.')
         }
         finally {
             setIsLoading(false)

@@ -9,7 +9,7 @@ import { getServerSession } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { FC, ReactNode } from "react";
+import { ReactNode } from "react";
 import MobileChatLayout from '@/components/MobileChatLayout'
 
 interface LayoutProps {
